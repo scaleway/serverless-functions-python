@@ -1,10 +1,34 @@
 [tool.poetry]
 name = "serverless-functions-python"
 version = "0.1.0"
-description = ""
+description = "Framework to provide a good developer experience when writing Serverless Functions in Python."
 authors = ["Scaleway Serverless Team <opensource@scaleway.com>"]
+
 readme = "README.md"
+license = "MIT"
+repository = "https://github.com/scaleway/serverless-functions-python"
+
+keywords = ["serverless", "scaleway", "functions", "cloud", "faas"]
+
+# Should be one of:
+# "Development Status :: 3 - Alpha"
+# "Development Status :: 4 - Beta"
+# "Development Status :: 5 - Production/Stable"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Internet",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
 packages = [{ include = "serverless_functions_python", from = "src" }]
+include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -26,7 +50,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-# addopts = ["--import-mode=importlib"]
 pythonpath = ["src"]
 testpaths = ["tests"]
 
