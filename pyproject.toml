@@ -34,7 +34,7 @@ packages = [
 include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.8, <3.12"
 flask = "^2.2.2"
 typing-extensions = { version = "^4.4.0", python = "<3.11" }
 

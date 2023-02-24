@@ -21,7 +21,7 @@ runs:
       uses: actions/cache@v3
       with:
         path: ~/.local
-        key: poetry-${{ github.event.inputs.python-version }}-v0
+        key: poetry-${{ inputs.python-version }}-v0
 
     - uses: snok/install-poetry@v1
       with:
@@ -34,9 +34,9 @@ runs:
       uses: actions/cache@v3
       with:
         path: .venv
-        key: venv-${{ github.event.inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ github.event.inputs.groups }}
+        key: venv-${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ inputs.groups }}
 
     - name: Install poetry dependencies
       shell: bash
-      run: poetry install --no-interaction --no-root --with=${{ github.event.inputs.groups }}
+      run: poetry install --no-interaction --no-root --with=${{ inputs.groups }}
       if: steps.cache-deps.outputs.cache-hit != 'true'
