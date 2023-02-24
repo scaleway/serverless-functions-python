@@ -45,12 +45,12 @@ repos:
       - id: pydocstyle
         additional_dependencies:
           - tomli # for reading config from pyproject.toml
-  # - repo: https://github.com/pre-commit/mirrors-mypy
-  #   rev: v1.0.0
-  #   hooks:
-  #     - id: mypy
-  #       additional_dependencies:
-  #         - typing_extensions
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.0.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - typing_extensions
   - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
     rev: v1.0.6
     hooks:

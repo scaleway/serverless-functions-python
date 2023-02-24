@@ -51,6 +51,8 @@ Do not hesitate to raise issues and pull requests we will have a look at them.
 
 ## Usage
 
+Here's how you can get started with the framework:
+
 ```python
 from serverless_functions_python import serve_handler_locally
 
@@ -58,10 +60,10 @@ def handler(event, context):
     return "Hello World!"
 
 if __name__ == "__main__":
-    serve_handler_locally(handler)
+    serve_handler_locally(handler, port=8080)
 ```
 
-This file will expose your handler on a local web server allowing you to test your function.
+This will expose your handler on a local web server allowing you to test your function.
 
 Some information will be added to requests for example specific headers. For local development, additional header values are hardcoded
 to make it easy to differentiate them. In production, you will be able to observe headers with exploitable data.
@@ -84,5 +86,3 @@ this tool has been developed to simulate this part.
 **Do I need to deploy my function differently?**
 
 No. This framework does not affect deployment or performance.
-
-## 🏛️ Architecture
