@@ -25,6 +25,7 @@ jobs:
       - uses: ./.github/actions/setup-poetry
         with:
           groups: ""
+          python-version: "3.11"
 
       - name: Publish package
         run: poetry publish --build

@@ -2,9 +2,11 @@ name: Set up poetry
 description: Install poetry and python dependencies
 inputs:
   groups:
-    description: "Poetry groups."
-    required: false
-    default: "dev"
+    description: "Poetry dependencies groups."
+    required: true
+  python-version:
+    description: "Python version."
+    required: true
 runs:
   using: "composite"
   steps:
@@ -14,18 +16,25 @@ runs:
         apk update
         apk add --no-cache bash curl
 
+    - name: Load cached Poetry installation
+      id: cached-poetry
+      uses: actions/cache@v3
+      with:
+        path: ~/.local
+        key: poetry-${{ github.event.inputs.python-version }}-v0
+
     - uses: snok/install-poetry@v1
       with:
-        version: 1.3.2
         virtualenvs-create: true
         virtualenvs-in-project: true
+      if: steps.cached-poetry.outputs.cache-hit != 'true'
 
     - name: Cache poetry dependencies
       id: cache-poetry-deps
       uses: actions/cache@v3
       with:
         path: .venv
-        key: pydeps-${{ hashFiles('**/poetry.lock') }}-${{ github.event.inputs.groups }}
+        key: venv-${{ github.event.inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ github.event.inputs.groups }}
 
     - name: Install poetry dependencies
       shell: bash
