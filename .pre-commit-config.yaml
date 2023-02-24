@@ -20,6 +20,7 @@ repos:
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
+        args: []
   - repo: https://github.com/psf/black
     rev: 23.1.0
     hooks:
@@ -37,13 +38,12 @@ repos:
         entry: pylint
         language: system
         types: [python]
-        # TODO: change this on GitHub
-        args: [-rn, -sn, --rcfile=python/pyproject.toml]
+        args: [-rn, -sn, --rcfile=pyproject.toml]
   - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
     hooks:
       - id: flake8
-        args: [--config=python/.flake8]
+        args: [--config=.flake8]
   - repo: https://github.com/pycqa/pydocstyle
     rev: 6.3.0
     hooks:
