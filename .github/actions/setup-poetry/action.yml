@@ -24,14 +24,14 @@ runs:
         virtualenvs-in-project: true
       if: steps.cached-poetry.outputs.cache-hit != 'true'
 
-    - name: Cache poetry dependencies
+    - name: Cache Poetry dependencies
       id: cache-poetry-deps
       uses: actions/cache@v3
       with:
         path: .venv
         key: venv-${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ inputs.groups }}
 
-    - name: Install poetry dependencies
+    - name: Install Poetry dependencies
       shell: bash
       run: poetry install --no-interaction --no-root --only main,${{ inputs.groups }}
       if: steps.cache-deps.outputs.cache-hit != 'true'
