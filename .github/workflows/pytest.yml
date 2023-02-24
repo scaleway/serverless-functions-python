@@ -1,5 +1,5 @@
 ---
-name: Pytest
+name: pytest
 
 on:
   push:
