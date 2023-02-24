@@ -18,13 +18,13 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-    container: python:3.11-alpine
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/setup-poetry
+      - name: Setup Poetry
+        uses: ./.github/actions/setup-poetry
         with:
-          groups: ""
+          groups: "" # will only install the main group
           python-version: "3.11"
 
       - name: Publish package
