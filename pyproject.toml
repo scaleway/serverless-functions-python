@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "serverless-functions-python"
+name = "scaleway_functions_python"
 version = "0.1.0"
 description = "Framework to provide a good developer experience when writing Serverless Functions in Python."
 authors = ["Scaleway Serverless Team <opensource@scaleway.com>"]
@@ -68,7 +68,9 @@ max-line-length = 89
 good-names = "i,fp,e"
 
 [tool.pylint-per-file-ignores]
-# Redfined outer name is for pytest fixtures
+# Import aliases are prefered over unused imports or __all__
+"__init__.py" = "useless-import-alias"
+# Redefined outer name is for pytest fixtures
 "/tests/" = "missing-class-docstring,missing-function-docstring,protected-access,redefined-outer-name"
 
 [tool.isort]

@@ -2,7 +2,9 @@ import json
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from serverless_functions_python import Context, Event, Response
+    # Doing a conditional import avoids the need to install the library
+    #  when deploying the function
+    from scaleway_functions_python.hints.v1 import Context, Event, Response
 
 
 def handler(event: "Event", context: "Context") -> "Response":
@@ -18,6 +20,6 @@ def handler(event: "Event", context: "Context") -> "Response":
 
 
 if __name__ == "__main__":
-    from serverless_functions_python import serve_handler_locally
+    from scaleway_functions_python import serve_handler_locally
 
     serve_handler_locally(handler)
