@@ -28,7 +28,8 @@ def inject_ingress_headers(request: "Request", event: "Event"):
         "X-Envoy-External-Address": request.remote_addr,
         "X-Request-Id": str(uuid.uuid4()),
     }
-    event["headers"] |= headers
+    # Not using |= to keep compatibility with python 3.8
+    event["headers"].update(**headers)
 
 
 def inject_egress_headers(response: "Response"):
