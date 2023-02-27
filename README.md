@@ -1,8 +1,24 @@
-# Scaleway Functions Python 💜
+# Serverless Functions Python 💜
 
-A framework that provides tools when working with Scaleway Serverless Functions in Python.
+Scaleway Serverless Functions is a framework to provide a good developer experience to write Serverless Functions.
 
-## Installation
+Serverless Functions make it easy to deploy, scale, and optimize your workloads on the cloud.
+
+Get started with Scaleway Functions (we support multiple languages :rocket:):
+
+- [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
+- [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
+- [Scaleway Serverless Examples](https://github.com/scaleway/serverless-examples)
+- [Scaleway Cloud Provider](https://scaleway.com)
+
+Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
+
+- [Go](https://github.com/scaleway/serverless-functions-go)
+- [Node](https://github.com/scaleway/serverless-functions-node)
+- [PHP](https://github.com/scaleway/serverless-functions-php)
+- [Rust](https://github.com/scaleway/serverless-functions-rust)
+
+## ⚙️ Quickstart
 
 You can use `pip` to install the framework:
 
@@ -10,7 +26,29 @@ You can use `pip` to install the framework:
 pip install scaleway-functions-python
 ```
 
-## Usage
+```python
+def handler(event, context):
+    return "Hello World!"
+
+if __name__ == "__main__":
+    from scaleway_functions_python import serve_handler_locally
+    serve_handler_locally(handler)
+```
+
+For advanced usage please check the [usage section](#📦-Usage).
+
+## 🛟 Help & support
+
+- Scaleway support is available on Scaleway Console.
+- Additionally, you can join our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)
+
+## 🎓 Contributing
+
+We welcome all contributions to our open-source projects, please see our [contributing guidelines](docs/CONTRIBUTING.md).
+
+Do not hesitate to raise issues and pull requests we will have a look at them.
+
+## 📦 Usage
 
 ### 🏡 Local testing
 
@@ -46,11 +84,6 @@ The framework provides some types hints to make it easier to develop your handle
 
 Check out the examples to get started!
 
-## 🛟 Help & support
-
-- Scaleway support is available on Scaleway Console.
-- Additionally, you can join our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)
-
 ## ❓ FAQ
 
 **Why do I need an additional package to call my function?**
@@ -66,10 +99,16 @@ this tool has been developed to simulate this part.
 
 **Do I need to deploy my function differently?**
 
-No. This framework does not affect deployment or performance.
+No. This framework does not affect deployment nor performance.
 
-## 🎓 Contributing
+## Development
 
-We welcome all contributions to our open-source projects, please see our contributing guidelines.
+This repository is at its early stage and is still in active development.
+If you are looking for a way to contribute please read [CONTRIBUTING.md](./docs/CONTRIBUTING.md).
 
-Do not hesitate to raise issues and pull requests we will have a look at them.
+## Reach Us
+
+We love feedback.
+Don't hesitate to open a [Github issue](https://github.com/scaleway/serverless-functions-python/issues/new) or
+feel free to reach us on [Scaleway Slack community](https://slack.scaleway.com/),
+we are waiting for you on [#serverless-functions](https://scaleway-community.slack.com/app_redirect?channel=serverless-functions).
