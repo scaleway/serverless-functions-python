@@ -1,5 +1,6 @@
 ---
 name: report
+
 on:
   workflow_run:
     workflows: [pytest]
