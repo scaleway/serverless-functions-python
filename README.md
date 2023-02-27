@@ -1,74 +1,55 @@
-# Serverless Functions Python 💜
+# Scaleway Functions Python 💜
 
-Scaleway Serverless Functions is a framework to provide a good developer experience to write Serverless Functions.
+A framework that provides tools when working with Scaleway Serverless Functions in Python.
 
-Serverless Functions make it easy to deploy, scale, and optimize your workloads on the cloud.
+## Installation
 
-Get started with Scaleway Functions (we support multiple languages :rocket:):
+You can use `pip` to install the framework:
 
-- [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
-- [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
-- [Scaleway Serverless Examples](https://github.com/scaleway/serverless-examples)
-- [Scaleway Cloud Provider](https://scaleway.com)
+```console
+pip install scaleway-functions-python
+```
 
-Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
+## Usage
 
-- [Node](https://github.com/scaleway/serverless-functions-node)
-- [Go](https://github.com/scaleway/serverless-functions-go)
-- [PHP](https://github.com/scaleway/serverless-functions-php)
-- [Rust](https://github.com/scaleway/serverless-functions-rust)
+### 🏡 Local testing
 
-## 🚀 Features
+When working with Serverless functions, it can be hard to test your function without deploying it. The framework provides a utility function that will run your handler locally:
 
-This repository aims to provide the best experience: **local testing, utils, documentation etc...**
-additionally we love to share things with the community and we want to expose receipts to the public. That's why we make our framework publicly available to help the community!
+```python
+# In handler.py
 
-## 🏡 Local testing
+# Define your Serverless Handler.
+def handler(event, _context):
+    if event["method"] != "GET":
+         return {"statusCode": 405, "body": "Invalid method!"}
+    return "Hello World!"
 
-What this package does:
+if __name__ == "__main__":
+    # The import is conditional so that you do not need
+    # to package the library when deploying on Scaleway Functions.
+    from scaleway_functions_python import serve_handler_locally
+    serve_handler_locally(handler, port=8080)
+```
 
-- **Format Input**: FaaS have a specific input format encapsulating the body received by functions to add some useful data.
-  The local testing package lets you interact with this data.
-- **Advanced debugging**: To improve developer experience you can run your handler locally, on your computer to make
-  it simpler to debug by running your code step-by-step or reading output directly before deploying it.
+```console
+$ python handler.py
+$ curl http://localhost:8080
+> Hello World!
+$ curl -X POST http://localhost:8080
+> Invalid method!
+```
 
-What this package does not:
+### 🧱 Type hints
 
-- **Build functions**: When your function is uploaded we build it in an environment that can be different than yours. Our build pipelines support
-  tons of different packages but sometimes it requires a specific setup, for example, if your function requires a specific 3D system library.
-If you have compatibility issues, please see the help section.
+The framework provides some types hints to make it easier to develop your handler. See this [example](examples/mirror.py) for more information on how to use them.
+
+Check out the examples to get started!
 
 ## 🛟 Help & support
 
 - Scaleway support is available on Scaleway Console.
 - Additionally, you can join our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)
-
-## 🎓 Contributing
-
-We welcome all contributions to our open-source projects, please see our contributing guidelines <link>.
-
-Do not hesitate to raise issues and pull requests we will have a look at them.
-
-## Usage
-
-Here's how you can get started with the framework:
-
-```python
-from serverless_functions_python import serve_handler_locally
-
-def handler(event, context):
-    return "Hello World!"
-
-if __name__ == "__main__":
-    serve_handler_locally(handler, port=8080)
-```
-
-This will expose your handler on a local web server allowing you to test your function.
-
-Some information will be added to requests for example specific headers. For local development, additional header values are hardcoded
-to make it easy to differentiate them. In production, you will be able to observe headers with exploitable data.
-
-Local testing part of this framework does not aim to simulate 100% production but it aims to make it easier to work with functions locally.
 
 ## ❓ FAQ
 
@@ -86,3 +67,9 @@ this tool has been developed to simulate this part.
 **Do I need to deploy my function differently?**
 
 No. This framework does not affect deployment or performance.
+
+## 🎓 Contributing
+
+We welcome all contributions to our open-source projects, please see our contributing guidelines.
+
+Do not hesitate to raise issues and pull requests we will have a look at them.
