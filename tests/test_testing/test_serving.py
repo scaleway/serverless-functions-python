@@ -65,8 +65,10 @@ def test_serve_handler_with_b64_encoded_body(client):
 
 @pytest.mark.parametrize("client", [h.handler_returns_exception], indirect=True)
 def test_serve_handler_with_exception(client):
-    resp = client.get("/")
-    assert resp.text == h.EXCEPTION_MESSAGE
+    # Not the production behavior
+    with pytest.raises(Exception) as e:
+        client.get("/")
+        assert str(e) == h.EXCEPTION_MESSAGE
 
 
 @pytest.mark.parametrize("client", [h.mirror_handler], indirect=True)

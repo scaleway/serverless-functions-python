@@ -81,7 +81,11 @@ class HandlerWrapper(View):
         try:
             function_result = self.handler(event, context)
         except Exception as e:  # pylint: disable=broad-exception-caught # from subRT
-            return make_response(str(e), 500)
+            self.logger.warning(
+                "Exception caught in handler %s, this will return a 500 when deployed",
+                self.handler.__name__,
+            )
+            raise e
         if isinstance(function_result, str):
             return make_response(function_result)
         return jsonify(function_result)
@@ -152,17 +156,21 @@ def _create_flask_app(handler: "hints.Handler") -> Flask:
     return app
 
 
-def serve_handler_locally(handler: "hints.Handler", *args, port: int = 9000, **kwargs):
+def serve_handler_locally(
+    handler: "hints.Handler", *args, port: int = 8080, debug: bool = True, **kwargs
+):
     """Serve a single FaaS handler on a local http server.
 
     :param handler: serverless python handler
-    :param port: port that the server should listen on, defaults to 9000
+    :param port: port that the server should listen on, defaults to 8080
+    :param debug: run Flask in debug mode, enables hot-reloading and stack trace.
 
     Example:
         >>> def handle(event, _context):
         ...     return {"body": event["httpMethod"]}
         >>> serve_handler_locally(handle, port=8080)
     """
-    app = _create_flask_app(handler)
+    app: Flask = _create_flask_app(handler)
     kwargs["port"] = port
+    kwargs["debug"] = debug
     app.run(*args, **kwargs)
