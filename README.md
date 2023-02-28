@@ -4,49 +4,13 @@ Scaleway Serverless Functions is a framework to provide a good developer experie
 
 Serverless Functions make it easy to deploy, scale, and optimize your workloads on the cloud.
 
-Get started with Scaleway Functions (we support multiple languages :rocket:):
-
-- [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
-- [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
-- [Scaleway Serverless Examples](https://github.com/scaleway/serverless-examples)
-- [Scaleway Cloud Provider](https://scaleway.com)
-
-Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
-
-- [Go](https://github.com/scaleway/serverless-functions-go)
-- [Node](https://github.com/scaleway/serverless-functions-node)
-- [PHP](https://github.com/scaleway/serverless-functions-php)
-- [Rust](https://github.com/scaleway/serverless-functions-rust)
-
-## ⚙️ Quickstart
+## ⚙️ Installation
 
 You can use `pip` to install the framework:
 
 ```console
 pip install scaleway-functions-python
 ```
-
-```python
-def handler(event, context):
-    return "Hello World!"
-
-if __name__ == "__main__":
-    from scaleway_functions_python import serve_handler_locally
-    serve_handler_locally(handler)
-```
-
-For advanced usage please check the [usage section](#📦-Usage).
-
-## 🛟 Help & support
-
-- Scaleway support is available on Scaleway Console.
-- Additionally, you can join our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)
-
-## 🎓 Contributing
-
-We welcome all contributions to our open-source projects, please see our [contributing guidelines](docs/CONTRIBUTING.md).
-
-Do not hesitate to raise issues and pull requests we will have a look at them.
 
 ## 📦 Usage
 
@@ -70,6 +34,8 @@ if __name__ == "__main__":
     serve_handler_locally(handler, port=8080)
 ```
 
+This adds an entry point to your Python script to run your Serverless handler locally.
+
 ```console
 $ python handler.py
 $ curl http://localhost:8080
@@ -82,29 +48,24 @@ $ curl -X POST http://localhost:8080
 
 The framework provides some types hints to make it easier to develop your handler. See this [example](examples/mirror.py) for more information on how to use them.
 
-Check out the examples to get started!
+## Resources
 
-## ❓ FAQ
+Get started with Scaleway Functions:
 
-**Why do I need an additional package to call my function?**
+- [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
+- [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
+- [Scaleway Serverless Examples](https://github.com/scaleway/serverless-examples)
+- [Scaleway Cloud Provider](https://scaleway.com)
 
-Your Function Handler can be served by a simple HTTP server but Serverless Ecosystem involves a lot of different layers
-and this package aims to simulate everything your request will go through.
+Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
 
-**How my function will be deployed**
+- [Go](https://github.com/scaleway/serverless-functions-go)
 
-Your function will be deployed in an environment that allows your function to easily Scale up and down and it's wrapped into
-different pieces of software with different roles. This stack also changes the headers, input and output of your function, that's why
-this tool has been developed to simulate this part.
+## 🎓 Contributing
 
-**Do I need to deploy my function differently?**
+We welcome all contributions to our open-source projects, please see our [contributing guidelines](docs/CONTRIBUTING.md).
 
-No. This framework does not affect deployment nor performance.
-
-## Development
-
-This repository is at its early stage and is still in active development.
-If you are looking for a way to contribute please read [CONTRIBUTING.md](./docs/CONTRIBUTING.md).
+Do not hesitate to raise issues and pull requests we will have a look at them.
 
 ## Reach Us
 
