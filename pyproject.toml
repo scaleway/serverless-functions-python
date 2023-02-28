@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "scaleway_functions_python"
+name = "scaleway-functions-python"
 version = "0.1.0"
 description = "Framework to provide a good developer experience when writing Serverless Functions in Python."
 authors = ["Scaleway Serverless Team <opensource@scaleway.com>"]
@@ -60,7 +60,7 @@ disable = "missing-module-docstring"
 # Commented Black formatted code.
 max-line-length = 89
 # Short and common names. e is commonly used for exceptions.
-good-names = "i,fp,e"
+good-names = "i,e"
 
 [tool.pylint-per-file-ignores]
 # Import aliases are prefered over unused imports or __all__
@@ -74,7 +74,7 @@ profile = "black"
 [tool.mypy]
 python_version = "3.8"
 strict = true
-exclude = ['^tests\.*']
+exclude = "tests"
 
 [tool.pydocstyle]
 # Compatible with Sphinx
