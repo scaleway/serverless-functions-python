@@ -7,11 +7,7 @@ from scaleway_functions_python.testing.event import format_http_event
 @pytest.fixture()
 def app():
     app = Flask("test")
-    app.config.update(
-        {
-            "TESTING": True,
-        }
-    )
+    app.config.update({"TESTING": True})
     yield app
 
 
