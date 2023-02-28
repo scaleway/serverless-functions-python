@@ -10,16 +10,16 @@
   - [Contributing code](#contributing-code)
     - [Submit code](#submit-code)
     - [Pull Request Guidelines](#pull-request-guidelines)
-  - [Community guidelines](#community-guidelines)
+  - [Community Guidelines](#community-guidelines)
 
 ## Reporting security issues
 
-At Scaleway we take security seriously. If you have any issue regarding security,
+At Scaleway we take security seriously. If you have any issues regarding security,
 please notify us by sending an email to security@scaleway.com.
 
 Please DO NOT create a GitHub issue.
 
-We will follow up with you promptly with more information and a plan for remediation.
+We will follow up with you promptly with more information and a remediation plan.
 We currently do not offer a paid security bounty program, but we would love to send some
 Scaleway swag your way along with our deepest gratitude for your assistance in making
 Scaleway a more secure Cloud ecosystem.
@@ -31,7 +31,7 @@ We always appreciate a well-written, thorough bug report, and will thank you for
 Before opening a new issue, we appreciate you reviewing open issues to see if there are any similar requests.
 If there is a match, thumbs up the issue with a 👍 and leave a comment if you have additional information.
 
-When reporting an issue, please include the version your are using in `go.mod` file.
+When reporting an issue, please include the PyPI version number of `scaleway-functions-python` that you are using.
 
 ## Suggesting a feature
 
@@ -53,7 +53,7 @@ To submit code:
 - Push your commit(s) to your topic branch on your fork
 - Open a pull request against `serverless-functions-python` `main` branch that follows [PR guidelines](#pull-request-guidelines)
 
-The maintainers of `serverless-functions-python` use a "Let's Gamble Try Merging" (LGTM) message in the pull request to note that the commits are ready to merge.
+The maintainers of `serverless-functions-python` use a "Let's Get This Merged" (LGTM) message in the pull request to note that the commits are ready to merge.
 After one or more maintainer states LGTM, we will merge.
 If you have questions or comments on your code, feel free to correct these in your branch through new commits.
 
@@ -73,10 +73,10 @@ The goal of the following guidelines is to have Pull Requests (PRs) that are fai
 
 Your pull request should be rebased against the `main` branch.
 
-Keep in mind only the **pull request title** will be used as commit message as we stash all commits on merge.
+Keep in mind only the **pull request title** will be used as the commit message as we stash all commits on merge.
 
-## Community guidelines
+## Community Guidelines
 
 See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-Thank you for reading through all of this, if you have any question feel free to [reach us](../README.md#reach-us)!
+Thank you for reading through all of this, if you have any questions feel free to [reach us](../README.md#reach-us)!
