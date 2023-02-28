@@ -48,7 +48,7 @@ $ curl -X POST http://localhost:8080
 
 The framework provides some types hints to make it easier to develop your handler. See this [example](examples/mirror.py) for more information on how to use them.
 
-## Resources
+## 🌍 Resources
 
 Get started with Scaleway Functions:
 
@@ -67,7 +67,7 @@ We welcome all contributions to our open-source projects, please see our [contri
 
 Do not hesitate to raise issues and pull requests we will have a look at them.
 
-## Reach Us
+## 💜 Reach Us
 
 We love feedback.
 Don't hesitate to open a [Github issue](https://github.com/scaleway/serverless-functions-python/issues/new) or
