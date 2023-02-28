@@ -1,6 +1,6 @@
 # Serverless Functions Python 💜
 
-This repo contains utilities for testing your Python functions for Scaleway Serverless Functions.
+This repo contains utilities for testing your Python handlers for Scaleway Serverless Functions.
 
 ## ⚙️ Quick Start
 

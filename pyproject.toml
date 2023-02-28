@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "scaleway-functions-python"
 version = "0.1.0"
-description = "Framework to provide a good developer experience when writing Serverless Functions in Python."
+description = "Utilities for testing your Python handlers for Scaleway Serverless Functions."
 authors = ["Scaleway Serverless Team <opensource@scaleway.com>"]
 
 readme = "README.md"
