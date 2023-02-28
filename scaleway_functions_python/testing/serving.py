@@ -68,7 +68,7 @@ class HandlerWrapper(View):  # type: ignore # Subclass of untyped class
             self.logger.warning(
                 "Request is too big, should not exceed %s Mb but is %s Mb",
                 MAX_CONTENT_LENGTH / (1 << 20),
-                request.content_length / (1 << 20),
+                req.content_length / (1 << 20),
             )
         if req.path in ["/favicon.ico", "/robots.txt"]:
             self.logger.warning(
