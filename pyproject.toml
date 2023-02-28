@@ -73,9 +73,8 @@ profile = "black"
 
 [tool.mypy]
 python_version = "3.8"
-warn_return_any = true
-warn_unused_configs = true
-check_untyped_defs = true
+strict = true
+exclude = ['^tests\.*']
 
 [tool.pydocstyle]
 # Compatible with Sphinx

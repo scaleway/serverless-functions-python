@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from ..framework.v1.hints import Event
 
 
-def inject_ingress_headers(request: "Request", event: "Event"):
+def inject_ingress_headers(request: "Request", event: "Event") -> None:
     """Inject headers for incoming requests.
 
     ..note::
@@ -33,6 +33,6 @@ def inject_ingress_headers(request: "Request", event: "Event"):
     event["headers"].update(**headers)
 
 
-def inject_egress_headers(response: "Response"):
+def inject_egress_headers(response: "Response") -> None:
     """Inject headers for outgoing requests."""
     response.headers.add("server", "envoy")

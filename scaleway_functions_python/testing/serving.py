@@ -1,7 +1,7 @@
 import logging
 from base64 import b64decode
 from json import JSONDecodeError
-from typing import TYPE_CHECKING, ClassVar, cast
+from typing import TYPE_CHECKING, Any, ClassVar, cast
 
 from flask import Flask, json, jsonify, make_response, request
 from flask.views import View
@@ -32,7 +32,7 @@ HTTP_METHODS = [
 MAX_CONTENT_LENGTH = 6291456
 
 
-class HandlerWrapper(View):
+class HandlerWrapper(View):  # type: ignore # Subclass of untyped class
     """View that emulates the provider-side processing of requests."""
 
     init_every_request: ClassVar[bool] = False
@@ -45,7 +45,7 @@ class HandlerWrapper(View):
         """Utility function to get a logger."""
         return logging.getLogger(self.handler.__name__)
 
-    def dispatch_request(self, *_args, **_kwargs):
+    def dispatch_request(self, *_args: Any, **_kwargs: Any) -> "FlaskResponse":
         """Handle http requests."""
         self.emulate_core_preprocess(request)
 
@@ -62,13 +62,13 @@ class HandlerWrapper(View):
 
         return resp
 
-    def emulate_core_preprocess(self, req: "FlaskRequest"):
+    def emulate_core_preprocess(self, req: "FlaskRequest") -> None:
         """Emulate the CoreRT guard."""
         if req.content_length and req.content_length > MAX_CONTENT_LENGTH:
             self.logger.warning(
                 "Request is too big, should not exceed %s Mb but is %s Mb",
                 MAX_CONTENT_LENGTH / (1 << 20),
-                request.content_length / (1 << 20),  # type: ignore
+                request.content_length / (1 << 20),
             )
         if req.path in ["/favicon.ico", "/robots.txt"]:
             self.logger.warning(
@@ -158,8 +158,12 @@ def _create_flask_app(handler: "hints.Handler") -> Flask:
 
 
 def serve_handler_locally(
-    handler: "hints.Handler", *args, port: int = 8080, debug: bool = True, **kwargs
-):
+    handler: "hints.Handler",
+    *args: Any,
+    port: int = 8080,
+    debug: bool = True,
+    **kwargs: Any,
+) -> None:
     """Serve a single FaaS handler on a local http server.
 
     :param handler: serverless python handler
