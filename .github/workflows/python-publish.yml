@@ -1,11 +1,4 @@
 ---
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
 
 name: python-publish
 
@@ -26,13 +19,13 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Set up Poetry
         uses: ./.github/actions/setup-poetry
         with:
-          groups: "" # will only install the main group
-          python-version: "3.11"
+          groups: ''  # will only install the main group
+          python-version: '3.11'
 
       - name: Publish package
         run: poetry publish --build

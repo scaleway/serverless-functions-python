@@ -1,10 +1,8 @@
 # Serverless Functions Python 💜
 
-Scaleway Serverless Functions is a framework to provide a good developer experience to write Serverless Functions.
+This repo contains utilities for testing your Python functions for Scaleway Serverless Functions.
 
-Serverless Functions make it easy to deploy, scale, and optimize your workloads on the cloud.
-
-## ⚙️ Installation
+## ⚙️ Quick Start
 
 You can use `pip` to install the framework:
 
@@ -12,17 +10,11 @@ You can use `pip` to install the framework:
 pip install scaleway-functions-python
 ```
 
-## 📦 Usage
-
-### 🏡 Local testing
-
-When working with Serverless functions, it can be hard to test your function without deploying it. The framework provides a utility function that will run your handler locally:
-
 ```python
-# In handler.py
+# handler.py
 
-# Define your Serverless Handler.
-def handler(event, _context):
+# Standard entrypoint to a Scaleway serverless function
+def handler(event, context):
     if event["method"] != "GET":
          return {"statusCode": 405, "body": "Invalid method!"}
     return "Hello World!"
@@ -34,7 +26,7 @@ if __name__ == "__main__":
     serve_handler_locally(handler, port=8080)
 ```
 
-This adds an entry point to your Python script to run your Serverless handler locally.
+You can then run your function locally:
 
 ```console
 $ python handler.py
@@ -44,7 +36,7 @@ $ curl -X POST http://localhost:8080
 > Invalid method!
 ```
 
-### 🧱 Type hints
+## 🧱 Type hints
 
 The framework provides some types hints to make it easier to develop your handler. See this [example](examples/mirror.py) for more information on how to use them.
 
@@ -69,7 +61,7 @@ Do not hesitate to raise issues and pull requests we will have a look at them.
 
 ## 💜 Reach Us
 
-We love feedback.
-Don't hesitate to open a [Github issue](https://github.com/scaleway/serverless-functions-python/issues/new) or
-feel free to reach us on [Scaleway Slack community](https://slack.scaleway.com/),
-we are waiting for you on [#serverless-functions](https://scaleway-community.slack.com/app_redirect?channel=serverless-functions).
+We love feedback. Feel free to:
+
+- Open a [Github issue](https://github.com/scaleway/serverless-functions-python/issues/new)
+- Send us a message on the [Scaleway Slack community](https://slack.scaleway.com/), in the [#serverless-functions](https://scaleway-community.slack.com/app_redirect?channel=serverless-functions) channel.

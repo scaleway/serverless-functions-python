@@ -14,7 +14,7 @@ jobs:
   test:
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ['3.8', '3.9', '3.10', '3.11']
 
     runs-on: ubuntu-22.04
     steps:
@@ -39,8 +39,7 @@ jobs:
 
       - name: Test with pytest
         working-directory: tests
-        run:
-          poetry run pytest --junitxml=junit/test-results-${{ matrix.python-version
+        run: poetry run pytest --junitxml=junit/test-results-${{ matrix.python-version
           }}.xml
 
       - name: Upload pytest report
