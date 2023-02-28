@@ -71,6 +71,12 @@ good-names = "i,fp,e"
 [tool.isort]
 profile = "black"
 
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+check_untyped_defs = true
+
 [tool.pydocstyle]
 # Compatible with Sphinx
 convention = "google"

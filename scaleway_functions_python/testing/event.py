@@ -37,7 +37,7 @@ def format_http_event(request: "Request") -> "Event":
         "stageVariable": {},
         "requestContext": context,
         "body": body,
-    }
+    }  # type: ignore # NotRequired works with Pylance here but not mypy 1.0 (bug?)
     try:
         b64decode(body, validate=True).decode("utf-8")
         event["isBase64Encoded"] = True
