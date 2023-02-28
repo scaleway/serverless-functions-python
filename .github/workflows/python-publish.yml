@@ -1,0 +1,34 @@
+---
+
+name: python-publish
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up python 3.11
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Set up Poetry
+        uses: ./.github/actions/setup-poetry
+        with:
+          groups: ''  # will only install the main group
+          python-version: '3.11'
+
+      - name: Publish package
+        run: poetry publish --build
+        env:
+          POETRY_HTTP_BASIC_PYPI_USERNAME: __token__
+          POETRY_HTTP_BASIC_PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}

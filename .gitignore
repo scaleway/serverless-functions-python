@@ -1,0 +1,15 @@
+# Reference: https://github.com/github/gitignore/blob/main/Python.gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+dist/
+
+# Unit test / coverage reports
+.coverage
+.cache
+.pytest_cache/
+
+# mypy
+.mypy_cache/

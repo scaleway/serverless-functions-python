@@ -1,0 +1,52 @@
+---
+name: pytest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up python ${{ matrix.python-version }}
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up Poetry
+        uses: ./.github/actions/setup-poetry
+        with:
+          groups: test
+          python-version: ${{ matrix.python-version }}
+
+      - name: Print versions
+        run: |
+          python --version
+          poetry --version
+
+      - name: Test with pytest
+        working-directory: tests
+        run: poetry run pytest --junitxml=junit/test-results-${{ matrix.python-version
+          }}.xml
+
+      - name: Upload pytest report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: tests/junit/test-results-${{ matrix.python-version }}.xml
+          retention-days: 3
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
