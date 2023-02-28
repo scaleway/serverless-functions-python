@@ -24,12 +24,12 @@ class Event(t.TypedDict):
 
     path: str
     httpMethod: str
-    headers: dict[str, str]
+    headers: t.Dict[str, str]
     multiValueHeaders: t.Literal[None]
-    queryStringParameters: dict[str, str]
+    queryStringParameters: t.Dict[str, str]
     multiValueQueryStringParameters: t.Literal[None]
     pathParameters: t.Literal[None]
-    stageVariable: dict[str, str]
+    stageVariable: t.Dict[str, str]
     requestContext: RequestContext
     body: str
     isBase64Encoded: NotRequired[t.Literal[True]]
@@ -47,7 +47,7 @@ class ResponseRecord(t.TypedDict, total=False):
     """Response dictionnary that the handler is expected to return."""
 
     body: str
-    headers: dict[str, str]
+    headers: t.Dict[str, str]
     statusCode: int
     isBase64Encoded: bool
 
