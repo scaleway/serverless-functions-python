@@ -6,14 +6,15 @@ from typing import TYPE_CHECKING, ClassVar, cast
 from flask import Flask, json, jsonify, make_response, request
 from flask.views import View
 
-from testing import infra
-from testing.context import format_context
-from testing.event import format_http_event
+from ..testing import infra
+from ..testing.context import format_context
+from ..testing.event import format_http_event
 
 if TYPE_CHECKING:
     from flask.wrappers import Request as FlaskRequest
     from flask.wrappers import Response as FlaskResponse
-    from serverless_functions_python import hints
+
+    from ..framework.v1 import hints
 
 # TODO?: Switch to https://docs.python.org/3/library/http.html#http-methods
 # for Python 3.11+
@@ -129,7 +130,7 @@ class HandlerWrapper(View):
         """Transform the ReponseRecord into an http reponse."""
         body = record.get("body", "")
         if record.get("isBase64Encoded") and body:
-            body = b64decode(body.encode("utf-8"), validate=True)
+            body = b64decode(body.encode("utf-8"), validate=True).decode("utf-8")
 
         resp = make_response(body, record.get("statusCode"))
 
@@ -144,7 +145,7 @@ class HandlerWrapper(View):
 
 
 def _create_flask_app(handler: "hints.Handler") -> Flask:
-    app = Flask(f"python_offline_{handler.__name__}")
+    app = Flask(f"serverless_local_{handler.__name__}")
 
     # Create the view from the handler
     view = HandlerWrapper(handler).as_view(handler.__name__, handler)

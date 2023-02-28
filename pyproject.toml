@@ -27,10 +27,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 
-packages = [
-    { include = "framework", from = "src" },
-    { include = "testing", from = "src" },
-]
 include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
@@ -56,7 +52,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 testpaths = ["tests"]
 
 [tool.pylint]

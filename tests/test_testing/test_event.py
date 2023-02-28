@@ -1,7 +1,7 @@
 import pytest
 from flask import Flask, request
 
-from testing.event import format_http_event
+from scaleway_functions_python.testing.event import format_http_event
 
 
 @pytest.fixture()

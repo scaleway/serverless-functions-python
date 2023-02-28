@@ -5,7 +5,8 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from flask.wrappers import Request, Response
-    from serverless_functions_python.hints import Event
+
+    from ..framework.v1.hints import Event
 
 
 def inject_ingress_headers(request: "Request", event: "Event"):

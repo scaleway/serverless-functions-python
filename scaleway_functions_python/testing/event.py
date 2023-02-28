@@ -4,7 +4,8 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from flask.wrappers import Request
-    from serverless_functions_python.hints import Event, RequestContext
+
+    from ..framework.v1.hints import Event, RequestContext
 
 
 def format_request_context(request: "Request") -> "RequestContext":

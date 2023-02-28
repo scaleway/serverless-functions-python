@@ -4,7 +4,7 @@ import uuid
 import pytest
 from flask.testing import FlaskClient
 
-from testing.serving import _create_flask_app
+from scaleway_functions_python.testing.serving import _create_flask_app
 
 from .. import handlers as h
 

@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from serverless_functions_python.hints import Context, Handler
+    from ..framework.v1.hints import Context, Handler
 
 
 def format_context(handler: "Handler") -> "Context":
