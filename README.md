@@ -22,8 +22,8 @@ def handler(event, context):
 if __name__ == "__main__":
     # The import is conditional so that you do not need
     # to package the library when deploying on Scaleway Functions.
-    from scaleway_functions_python import serve_handler_locally
-    serve_handler_locally(handler, port=8080)
+    from scaleway_functions_python import local
+    local.serve_handler(handler, port=8080)
 ```
 
 You can then run your function locally:
