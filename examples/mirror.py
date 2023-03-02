@@ -20,6 +20,6 @@ def handler(event: "Event", context: "Context") -> "Response":
 
 
 if __name__ == "__main__":
-    from scaleway_functions_python import serve_handler_locally
+    from scaleway_functions_python import local
 
-    serve_handler_locally(handler)
+    local.serve_handler(handler)

@@ -6,9 +6,9 @@ from typing import TYPE_CHECKING, Any, ClassVar, cast
 from flask import Flask, json, jsonify, make_response, request
 from flask.views import View
 
-from ..testing import infra
-from ..testing.context import format_context
-from ..testing.event import format_http_event
+from ..local import infra
+from ..local.context import format_context
+from ..local.event import format_http_event
 
 if TYPE_CHECKING:
     from flask.wrappers import Request as FlaskRequest
@@ -157,7 +157,7 @@ def _create_flask_app(handler: "hints.Handler") -> Flask:
     return app
 
 
-def serve_handler_locally(
+def serve_handler(
     handler: "hints.Handler",
     *args: Any,
     port: int = 8080,

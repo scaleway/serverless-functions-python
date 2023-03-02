@@ -1,3 +1,3 @@
-from . import testing as testing
+from . import local as local
 from .framework import v1 as v1
-from .testing.serving import serve_handler_locally as serve_handler_locally
+from .local.serving import serve_handler as serve_handler
