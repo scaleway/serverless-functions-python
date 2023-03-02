@@ -1,11 +1,11 @@
 # Serverless Functions Python 💜
 
-Scaleway Serverless Functions Python is a framework which simplify Scaleway [Serverless Functions](https://www.scaleway.com/fr/serverless-functions/) local development. 
+Scaleway Serverless Functions Python is a framework that simplifies Scaleway [Serverless Functions](https://www.scaleway.com/fr/serverless-functions/) local development.
 It enables you to debug your function locally and provide the event data format used in Scaleway Serverless Functions.
 
-Be careful, this framework does not enable you to build and deploy your function (for more information, refer to the official documentation)
+This library helps you to write functions but for deployment please refer to the documentation.
 
-Get started with Scaleway Functions (we support multiple languages :rocket:):
+Get started with Scaleway Functions:
 
 - [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
 - [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
@@ -13,9 +13,10 @@ Get started with Scaleway Functions (we support multiple languages :rocket:):
 - [Scaleway Cloud Provider](https://scaleway.com)
 
 Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
+
 - [Go](https://github.com/scaleway/serverless-functions-go)
 
-## ⚙️ Quick Start
+## ⚙️ Quickstart
 
 You can use `pip` to install the framework:
 
@@ -48,11 +49,10 @@ $ curl http://localhost:8080
 $ curl -X POST http://localhost:8080
 > Invalid method!
 ```
+
 ## 🚀 Features
 
-This repository aims to provide the best experience: **local testing, utils, documentation etc...**
-additionally we love to share things with the community and we want to expose receipts to the public. That's why
-we make our framework publicly available to help the community!
+This repository aims to provide a better experience on **local testing, utils, and documentation**
 
 ### 🏡 Local testing
 
@@ -65,12 +65,10 @@ What this package does:
 What this package does not:
 
 - **Simulate performance**: Scaleway FaaS lets you choose different options for CPU/RAM that can have an impact
-  on your development. This package does not provide specific limits for your function on local testing but you can
-  add [Profile your application](*LINK TO EDIT*) or you can use our metrics available in [Scaleway Console](https://console.scaleway.com/)
+  on your development. This package does not provide specific limits for your function on local testing but you can profile your application or you can use our metrics available in [Scaleway Console](https://console.scaleway.com/)
   to monitor your application.
-- **Deploy functions**: When your function is uploaded we package it in an environment that can be different than yours. Our build pipelines support several dependencies but sometimes it requires specific system dependencies (especially those related to lib c) that we don't support
+- **Deploy functions**: When your function is uploaded we package it in an environment that can be different than yours. Our build pipelines support several dependencies but sometimes require specific system dependencies (especially those related to lib c) that we don't support
   If you have compatibility issues, please see the help section.
-
 
 ### 🧱 Type hints
 
@@ -90,8 +88,7 @@ To deploy your function please refer to our official documentation.
 
 **Do I need to deploy my function differently?**
 
-No. This framework does not affect deployment nor performance.
-
+No, this framework does not affect deployment or performance.
 
 ## 🧑‍💻 Development
 
@@ -105,7 +102,7 @@ If you are looking for a way to contribute please read [CONTRIBUTING.md](./docs/
 
 ## 🎓 Contributing
 
-We welcome all contributions to our open-source projects, please see our contributing guidelines <link>.
+We welcome all contributions to our open-source projects, please see our contributing guidelines.
 
 Do not hesitate to raise issues and pull requests we will have a look at them.
 
