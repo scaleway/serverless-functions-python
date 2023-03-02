@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from ..framework.v1.hints import Event, RequestContext
 
 
-def format_request_context(request: "Request") -> "RequestContext":
+def _format_request_context(request: "Request") -> "RequestContext":
     """Format the request context from the request."""
     return {
         "accountId": "",
@@ -24,7 +24,7 @@ def format_request_context(request: "Request") -> "RequestContext":
 
 def format_http_event(request: "Request") -> "Event":
     """Format the event from a generic http request."""
-    context = format_request_context(request)
+    context = _format_request_context(request)
     body = request.get_data(as_text=True)
     event: "Event" = {
         "path": request.path,
