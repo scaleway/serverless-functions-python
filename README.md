@@ -55,7 +55,7 @@ Testing frameworks for Scaleway Serverless Functions in other languages can be f
 
 ## 🎓 Contributing
 
-We welcome all contributions to our open-source projects, please see our [contributing guidelines](docs/CONTRIBUTING.md).
+We welcome all contributions to our open-source projects, please see our [contributing guidelines](.github/CONTRIBUTING.md).
 
 Do not hesitate to raise issues and pull requests we will have a look at them.
 
