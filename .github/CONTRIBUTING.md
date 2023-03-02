@@ -79,4 +79,4 @@ Keep in mind only the **pull request title** will be used as the commit message 
 
 See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-Thank you for reading through all of this, if you have any questions feel free to [reach us](../README.md#💜-reach-us)!
+Thank you for reading through all of this, if you have any questions feel free to [reach us](../README.md#reach-us)!
