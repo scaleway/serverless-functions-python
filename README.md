@@ -1,5 +1,9 @@
 # Serverless Functions Python 💜
 
+[![PyPI version](https://badge.fury.io/py/scaleway-functions-python.svg)](https://badge.fury.io/py/scaleway-functions-python)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/scaleway/serverless-functions-python/main.svg)](https://results.pre-commit.ci/latest/github/scaleway/serverless-functions-python/main)
+![pre-commit.ci status](https://img.shields.io/badge/python-3.8-blue.svg)
+
 Scaleway Serverless Functions Python is a framework that simplifies Scaleway [Serverless Functions](https://www.scaleway.com/fr/serverless-functions/) local development.
 It enables you to debug your function locally and provide the event data format used in Scaleway Serverless Functions.
 
