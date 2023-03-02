@@ -1,8 +1,22 @@
 # Serverless Functions Python 💜
 
-This repo contains utilities for testing your Python handlers for Scaleway Serverless Functions.
+Scaleway Serverless Functions Python is a framework that simplifies Scaleway [Serverless Functions](https://www.scaleway.com/fr/serverless-functions/) local development.
+It enables you to debug your function locally and provide the event data format used in Scaleway Serverless Functions.
 
-## ⚙️ Quick Start
+This library helps you to write functions but for deployment please refer to the documentation.
+
+Get started with Scaleway Functions:
+
+- [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
+- [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
+- [Scaleway Serverless Examples](https://github.com/scaleway/serverless-examples)
+- [Scaleway Cloud Provider](https://scaleway.com)
+
+Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
+
+- [Go](https://github.com/scaleway/serverless-functions-go)
+
+## ⚙️ Quickstart
 
 You can use `pip` to install the framework:
 
@@ -36,26 +50,48 @@ $ curl -X POST http://localhost:8080
 > Invalid method!
 ```
 
-## 🧱 Type hints
+## 🚀 Features
+
+This repository aims to provide a better experience on **local testing, utils, and documentation**
+
+### 🏡 Local testing
+
+What this package does:
+
+- **Format Input**: Serverless Functions have a specific input format encapsulating the body received by functions to add some useful data.
+  The local testing package lets you interact with the formatted data.
+- **Advanced debugging**: To improve developer experience you can run your handler locally and debug it by running your code step-by-step or reading output directly before deploying it.
+
+What this package does not:
+
+- **Simulate performance**: Scaleway FaaS lets you choose different options for CPU/RAM that can have an impact
+  on your development. This package does not provide specific limits for your function on local testing but you can profile your application or you can use our metrics available in [Scaleway Console](https://console.scaleway.com/)
+  to monitor your application.
+- **Deploy functions**: When your function is uploaded we package it in an environment that can be different than yours. Our build pipelines support several dependencies but sometimes require specific system dependencies (especially those related to lib c) that we don't support
+  If you have compatibility issues, please see the help section.
+
+### 🧱 Type hints
 
 The framework provides some types hints to make it easier to develop your handler. See this [example](examples/mirror.py) for more information on how to use them.
 
-## 🌍 Resources
+## ❓ FAQ
 
-Get started with Scaleway Functions:
+**Why do I need an additional package to call my function?**
 
-- [Scaleway Serverless Functions Documentation](https://www.scaleway.com/en/docs/serverless/functions/quickstart/)
-- [Scaleway Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions)
-- [Scaleway Serverless Examples](https://github.com/scaleway/serverless-examples)
-- [Scaleway Cloud Provider](https://scaleway.com)
+Your Function Handler can be served by a simple HTTP server but Serverless Ecosystem involves a lot of different layers that will change changes the headers, input and output of your function. This package aims to simulate everything your request will go through to help you debug your application properly.
+This library is not mandatory to use Scaleway Serverless Functions.
 
-Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
+**How my function will be deployed**
 
-- [Go](https://github.com/scaleway/serverless-functions-go)
+To deploy your function please refer to our official documentation.
+
+**Do I need to deploy my function differently?**
+
+No, this framework does not affect deployment or performance.
 
 ## 🎓 Contributing
 
-We welcome all contributions to our open-source projects, please see our [contributing guidelines](.github/CONTRIBUTING.md).
+We welcome all contributions to our open-source projects, please see our [contributing guidelines](./.github/CONTRIBUTING.md).
 
 Do not hesitate to raise issues and pull requests we will have a look at them.
 
