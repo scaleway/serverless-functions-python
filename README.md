@@ -74,7 +74,6 @@ What this package does not:
 
 The framework provides some types hints to make it easier to develop your handler. See this [example](examples/mirror.py) for more information on how to use them.
 
-
 ## ❓ FAQ
 
 **Why do I need an additional package to call my function?**
@@ -90,25 +89,15 @@ To deploy your function please refer to our official documentation.
 
 No, this framework does not affect deployment or performance.
 
-## 🧑‍💻 Development
-
-This repository is at its early stage and is still in active development.
-If you are looking for a way to contribute please read [CONTRIBUTING.md](./docs/CONTRIBUTING.md).
-
-## 🛟 Help & support
-
-- Scaleway support is available on Scaleway Console.
-- Additionally, you can join our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)
-
 ## 🎓 Contributing
 
-We welcome all contributions to our open-source projects, please see our contributing guidelines.
+We welcome all contributions to our open-source projects, please see our [contributing guidelines](./.github/CONTRIBUTING.md).
 
 Do not hesitate to raise issues and pull requests we will have a look at them.
 
 ## 📭 Reach Us
 
-We love feedback.
-Don't hesitate to open a [Github issue](https://github.com/scaleway/serverless-functions/go/issues/new) or
-feel free to reach us on [Scaleway Slack community](https://slack.scaleway.com/),
-we are waiting for you on [#serverless-functions](https://scaleway-community.slack.com/app_redirect?channel=serverless-functions).
+We love feedback. Feel free to:
+
+- Open a [Github issue](https://github.com/scaleway/serverless-functions-python/issues/new)
+- Send us a message on the [Scaleway Slack community](https://slack.scaleway.com/), in the [#serverless-functions](https://scaleway-community.slack.com/app_redirect?channel=serverless-functions) channel.
