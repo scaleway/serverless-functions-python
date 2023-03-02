@@ -15,7 +15,7 @@ pip install scaleway-functions-python
 
 # Standard entrypoint to a Scaleway serverless function
 def handler(event, context):
-    if event["method"] != "GET":
+    if event["httpMethod"] != "GET":
          return {"statusCode": 405, "body": "Invalid method!"}
     return "Hello World!"
 
