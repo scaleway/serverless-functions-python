@@ -21,10 +21,13 @@ labels: bug
 
 ### What did you see instead?
 
-### What version of Go are you using (`go version`)?
+### What version of Python are you using (`python --version`)?
 
 ```sh
-$ go version
+$ python --version
+
+# Optionnally, provide the version of your dependencies
+$ pip freeze
 ```
 
 ### Does this issue reproduce with the latest release?
