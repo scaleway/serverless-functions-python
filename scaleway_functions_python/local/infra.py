@@ -22,7 +22,7 @@ def inject_ingress_headers(request: "Request", event: "Event") -> None:
     headers = {
         "Forwarded": f"for={request.remote_addr};proto=http",
         "X-Forwarded-For": request.remote_addr,
-        "X-Envoy-External-Adrdress": request.remote_addr,
+        "K-Proxy-Request": "activator",
         "X-Forwarded-Proto": "http",
         # In this context "X-Forwared-For" == "X-Envoy-External-Address"
         # this property doesn't hold for actual functions
