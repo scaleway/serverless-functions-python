@@ -83,8 +83,9 @@ def test_serve_handler_inject_infra_headers(client):
 
     # Check the headers injected in the event object
     assert headers["Forwarded"] == "for=127.0.0.1;proto=http"
+    assert headers["K-Proxy-Request"] == "activator"
     assert headers["X-Forwarded-For"] == "127.0.0.1"
-    assert headers["X-Envoy-External-Adrdress"] == "127.0.0.1"
+    assert headers["X-Envoy-External-Address"] == "127.0.0.1"
     assert headers["X-Forwarded-Proto"] == "http"
 
     uuid.UUID(headers["X-Request-Id"])
