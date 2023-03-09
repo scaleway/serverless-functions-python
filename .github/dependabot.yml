@@ -6,7 +6,11 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    reviewers:
+      - "cyclimse"
   - package-ecosystem: pip
     directory: /
     schedule:
       interval: weekly
+    reviewers:
+      - "cyclimse"
