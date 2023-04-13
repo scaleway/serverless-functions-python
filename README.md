@@ -19,6 +19,7 @@ Get started with Scaleway Functions:
 Testing frameworks for Scaleway Serverless Functions in other languages can be found here:
 
 - [Go](https://github.com/scaleway/serverless-functions-go)
+- [Node](https://github.com/scaleway/serverless-functions-node)
 
 ## ⚙️ Quickstart
 
