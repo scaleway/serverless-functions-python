@@ -12,3 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial project setup
 - Local testing utils
 - Repository setup
+
+## [0.1.1] - 2023-04-14
+
+### Fixed
+
+- Fix typos in headers injected by Envoy
+
+### Changed
+
+- Update README with link to Serverless Functions Node
