@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "scaleway-functions-python"
-version = "0.1.0"
+version = "0.1.1"
 description = "Utilities for testing your Python handlers for Scaleway Serverless Functions."
 authors = ["Scaleway Serverless Team <opensource@scaleway.com>"]
 
@@ -15,7 +15,7 @@ keywords = ["serverless", "scaleway", "functions", "cloud", "faas"]
 # "Development Status :: 4 - Beta"
 # "Development Status :: 5 - Production/Stable"
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: Information Technology",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
