@@ -27,4 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added a simple Server to test with multiple handlers
+- Added a simple server to test with multiple handlers
