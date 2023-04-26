@@ -1,7 +1,7 @@
 import logging
 from base64 import b64decode
 from json import JSONDecodeError
-from typing import TYPE_CHECKING, Any, ClassVar, cast
+from typing import TYPE_CHECKING, Any, ClassVar, List, Optional, cast
 
 from flask import Flask, json, jsonify, make_response, request
 from flask.views import View
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 # TODO?: Switch to https://docs.python.org/3/library/http.html#http-methods
 # for Python 3.11+
-HTTP_METHODS = [
+ALL_HTTP_METHODS = [
     "GET",
     "HEAD",
     "POST",
@@ -144,17 +144,57 @@ class HandlerWrapper(View):  # type: ignore # Subclass of untyped class
         return resp
 
 
-def _create_flask_app(handler: "hints.Handler") -> Flask:
-    app = Flask(f"serverless_local_{handler.__name__}")
+class LocalFunctionServer:
+    """LocalFunctionServer serves Scaleway FaaS handlers on a local http server."""
 
-    # Create the view from the handler
-    view = HandlerWrapper(handler).as_view(handler.__name__, handler)
+    def __init__(self) -> None:
+        self.app = Flask("serverless_local")
 
-    # By default, methods contains ["GET", "HEAD", "OPTIONS"]
-    app.add_url_rule("/<path:path>", methods=HTTP_METHODS, view_func=view)
-    app.add_url_rule("/", methods=HTTP_METHODS, defaults={"path": ""}, view_func=view)
+    def add_handler(
+        self,
+        handler: "hints.Handler",
+        relative_url: Optional[str] = None,
+        http_methods: Optional[List[str]] = None,
+    ) -> "LocalFunctionServer":
+        """Add a handler to be served by the server.
 
-    return app
+        :param handler: serverless python handler
+        :param relative_url: path to the handler, defaults to / + handler's name
+        :param http_methods: HTTP methods for the handler, defaults to all methods
+        """
+        relative_url = relative_url if relative_url else "/" + handler.__name__
+        if not relative_url.startswith("/"):
+            relative_url = "/" + relative_url
+
+        http_methods = http_methods if http_methods else ALL_HTTP_METHODS
+        http_methods = [method.upper() for method in http_methods]
+
+        view = HandlerWrapper(handler).as_view(handler.__name__, handler)
+
+        # By default, methods contains ["GET", "HEAD", "OPTIONS"]
+        self.app.add_url_rule(
+            f"{relative_url}/<path:path>", methods=http_methods, view_func=view
+        )
+        self.app.add_url_rule(
+            relative_url,
+            methods=http_methods,
+            defaults={"path": ""},
+            view_func=view,
+        )
+
+        return self
+
+    def serve(
+        self, *args: Any, port: int = 8080, debug: bool = True, **kwargs: Any
+    ) -> None:
+        """Serve the added FaaS handlers.
+
+        :param port: port that the server should listen on, defaults to 8080
+        :param debug: run Flask in debug mode, enables hot-reloading and stack trace.
+        """
+        kwargs["port"] = port
+        kwargs["debug"] = debug
+        self.app.run(*args, **kwargs)
 
 
 def serve_handler(
@@ -175,7 +215,6 @@ def serve_handler(
         ...     return {"body": event["httpMethod"]}
         >>> serve_handler_locally(handle, port=8080)
     """
-    app: Flask = _create_flask_app(handler)
-    kwargs["port"] = port
-    kwargs["debug"] = debug
-    app.run(*args, **kwargs)
+    server = LocalFunctionServer()
+    server.add_handler(handler=handler, relative_url="/")
+    server.serve(*args, port=port, debug=debug, **kwargs)

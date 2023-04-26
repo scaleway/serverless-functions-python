@@ -22,3 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update README with link to Serverless Functions Node
+
+## [0.2.0] - 2023-04-23
+
+### Added
+
+- Added a simple Server to test with multiple handlers
