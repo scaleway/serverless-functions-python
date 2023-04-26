@@ -12,7 +12,7 @@ from .. import handlers as h
 @pytest.fixture(scope="function")
 def client(request) -> FlaskClient:
     server = LocalFunctionServer()
-    server.add_handler(handler=request.param)
+    server.add_handler(handler=request.param, relative_url="/")
     server.app.config.update({"TESTING": True})
     return server.app.test_client()
 
