@@ -4,16 +4,17 @@ import uuid
 import pytest
 from flask.testing import FlaskClient
 
-from scaleway_functions_python.local.serving import _create_flask_app
+from scaleway_functions_python.local.serving import LocalFunctionServer
 
 from .. import handlers as h
 
 
 @pytest.fixture(scope="function")
 def client(request) -> FlaskClient:
-    app = _create_flask_app(request.param)
-    app.config.update({"TESTING": True})
-    return app.test_client()
+    server = LocalFunctionServer()
+    server.add_handler(handler=request.param, relative_url="/")
+    server.app.config.update({"TESTING": True})
+    return server.app.test_client()
 
 
 @pytest.mark.parametrize(
@@ -89,3 +90,33 @@ def test_serve_handler_inject_infra_headers(client):
     assert headers["X-Forwarded-Proto"] == "http"
 
     uuid.UUID(headers["X-Request-Id"])
+
+
+def test_local_function_server_multiple_routes():
+    # Setup a server with two handlers
+    server = LocalFunctionServer()
+    server.add_handler(
+        handler=h.handler_that_returns_string,
+        relative_url="/message",
+        http_methods=["GET"],  # type: ignore
+    )
+    server.add_handler(
+        handler=h.handler_returns_exception,
+        relative_url="kaboom",
+        http_methods=["POST", "PUT"],  # type: ignore
+    )  # type: ignore
+    server.app.config.update({"TESTING": True})
+    client = server.app.test_client()
+
+    resp = client.get("/message")
+    assert resp.text == h.HELLO_WORLD
+
+    resp = client.post("/message")
+    assert resp.status_code == 405  # Method not allowed
+
+    resp = client.get("/kaboom")
+    assert resp.status_code == 405
+
+    with pytest.raises(Exception) as e:
+        client.put("/kaboom")
+        assert str(e) == h.EXCEPTION_MESSAGE
