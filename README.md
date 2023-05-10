@@ -97,7 +97,7 @@ No, this framework does not affect deployment or performance.
 **Why are my logs not showing up when using the print function?**
 
 By default, stdout is buffered in Python, so calling `print` without `flush=True` can lead to missing logs when running locally.
-If you experience this issue, you can export the environment variable `PYTHONUNBUFFERED` with `export PYTHONUNBUFFERED=1`. 
+If you experience this issue, you can export the environment variable `PYTHONUNBUFFERED` with `export PYTHONUNBUFFERED=1`.
 This will flush stdout on every print call.
 
 ## 🎓 Contributing
