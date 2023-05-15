@@ -674,14 +674,14 @@ testutils = ["gitpython (>3)"]
 
 [[package]]
 name = "pylint-per-file-ignores"
-version = "1.2.0"
+version = "1.2.1"
 description = "A pylint plugin to ignore error codes per file."
 category = "dev"
 optional = false
 python-versions = ">=3.8.1,<4.0.0"
 files = [
-    {file = "pylint_per_file_ignores-1.2.0-py3-none-any.whl", hash = "sha256:15839fcac882367c088625215a141e60a8ab11e6abe38e66ad2167c507403fc3"},
-    {file = "pylint_per_file_ignores-1.2.0.tar.gz", hash = "sha256:665e29dd02061bbdd70ced7273a6971880fe97a3a2c15615ad2b31e567559b3c"},
+    {file = "pylint_per_file_ignores-1.2.1-py3-none-any.whl", hash = "sha256:09a33dd5a6870286dc0575ed047f2ec59fe19a67df054d68694395eb97266e07"},
+    {file = "pylint_per_file_ignores-1.2.1.tar.gz", hash = "sha256:c2875b982c3edce3637372efdc4889867966c515313627bea32b8558b876b4da"},
 ]
 
 [package.dependencies]
