@@ -94,6 +94,12 @@ To deploy your function please refer to our official documentation.
 
 No, this framework does not affect deployment or performance.
 
+**How can I use my packaged dependencies?**
+
+When deploying Python functions, your dependencies must be bundled in a `package` folder at the root of your project. For local testing, you can set `PYTHONPATH=$(pwd)/package` to make your dependencies available. This can be useful to avoid packaging your dependencies in multiple locations.
+
+Please note that this does not work for native dependencies as the Scaleway Python runtime is different from your local machine.
+
 ## 🎓 Contributing
 
 We welcome all contributions to our open-source projects, please see our [contributing guidelines](./.github/CONTRIBUTING.md).
