@@ -44,7 +44,7 @@ black = "^23.01.0"
 flake8 = "^6.0.0"
 isort = "^5.10.1"
 pre-commit = "^3.0.4"
-pylint = "^2.16.2"
+pylint = ">=2.16.2,<4.0.0"
 pylint-per-file-ignores = "^1.2.0"
 
 [build-system]
