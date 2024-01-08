@@ -22,12 +22,12 @@ repos:
         stages: [commit-msg]
         args: []
   - repo: https://github.com/psf/black
-    rev: 23.11.0
+    rev: 23.12.1
     hooks:
       - id: black
         args: [--safe, --quiet]
   - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
+    rev: 5.13.2
     hooks:
       - id: isort
         name: isort (python)
@@ -40,7 +40,7 @@ repos:
         types: [python]
         args: [-rn, -sn, --rcfile=pyproject.toml]
   - repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
+    rev: 7.0.0
     hooks:
       - id: flake8
         args: [--config=.flake8]
@@ -51,7 +51,7 @@ repos:
         additional_dependencies:
           - tomli # for reading config from pyproject.toml
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.1
+    rev: v1.8.0
     hooks:
       - id: mypy
         exclude: "^tests/" # See: https://github.com/pre-commit/mirrors-mypy/issues/1
@@ -59,7 +59,7 @@ repos:
         additional_dependencies:
           - typing_extensions
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.5
+    rev: 1.7.6
     hooks:
       - id: bandit
         args: [--skip, B101, --recursive, clumper]
