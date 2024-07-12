@@ -5,6 +5,7 @@ import json
 
 HELLO_WORLD = "Hello World"
 EXCEPTION_MESSAGE = "oops"
+NON_UTF8_BINARY_DATA = b"\x80\x81\x82\x83\x84\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f"
 
 # pylint: disable=missing-function-docstring
 
@@ -39,7 +40,7 @@ def handler_returns_is_base_64_encoded(event, _context):  # noqa
 
 def handler_returns_base64_encoded_body(_event, _context):  # noqa
     return {
-        "body": base64.b64encode(HELLO_WORLD.encode("utf-8")).decode("utf-8"),
+        "body": base64.b64encode(NON_UTF8_BINARY_DATA).decode("utf-8"),
         "isBase64Encoded": True,
     }
 

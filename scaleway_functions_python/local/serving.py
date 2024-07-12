@@ -1,7 +1,7 @@
 import logging
 from base64 import b64decode
 from json import JSONDecodeError
-from typing import TYPE_CHECKING, Any, ClassVar, List, Optional, cast
+from typing import TYPE_CHECKING, Any, ClassVar, List, Optional, Union, cast
 
 from flask import Flask, json, jsonify, make_response, request
 from flask.views import View
@@ -128,9 +128,9 @@ class HandlerWrapper(View):  # type: ignore # Subclass of untyped class
         self, record: "hints.ResponseRecord"
     ) -> "FlaskResponse":
         """Transform the ReponseRecord into an http reponse."""
-        body = record.get("body", "")
+        body: Union[str, bytes] = record.get("body", "")
         if record.get("isBase64Encoded") and body:
-            body = b64decode(body.encode("utf-8"), validate=True).decode("utf-8")
+            body = b64decode(cast(str, body).encode("utf-8"), validate=True)
 
         resp = make_response(body, record.get("statusCode"))
 
