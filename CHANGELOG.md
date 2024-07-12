@@ -28,3 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added a simple server to test with multiple handlers
+
+## [0.2.1] - 2024-07-15
+
+### Fixed
+
+- Returning a base64 encoded response would not be decoded by the framework
