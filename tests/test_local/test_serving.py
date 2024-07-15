@@ -61,7 +61,7 @@ def test_serve_handler_b64_parameter_correct(client):
 )
 def test_serve_handler_with_b64_encoded_body(client):
     resp = client.get("/")
-    assert resp.text == h.HELLO_WORLD
+    assert resp.data == h.NON_UTF8_BINARY_DATA
 
 
 @pytest.mark.parametrize("client", [h.handler_returns_exception], indirect=True)
