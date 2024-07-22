@@ -1,5 +1,4 @@
 ---
-
 name: python-publish
 
 on:
@@ -15,17 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up python 3.11
+      - name: Set up python 3.12
         id: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.12"
 
       - name: Set up Poetry
         uses: ./.github/actions/setup-poetry
         with:
-          groups: ''  # will only install the main group
-          python-version: '3.11'
+          groups: main
+          python-version: "3.12"
 
       - name: Publish package
         run: poetry publish --build

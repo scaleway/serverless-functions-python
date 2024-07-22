@@ -1,5 +1,8 @@
+---
 name: Set up poetry
+
 description: Install poetry and python dependencies
+
 inputs:
   groups:
     description: "Poetry dependencies groups."
@@ -7,6 +10,7 @@ inputs:
   python-version:
     description: "Python version."
     required: true
+
 runs:
   using: "composite"
   steps:
@@ -29,9 +33,9 @@ runs:
       uses: actions/cache@v3
       with:
         path: .venv
-        key: venv-${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ inputs.groups }}
+        key: venv-${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
     - name: Install Poetry dependencies
       shell: bash
-      run: poetry install --no-interaction --no-root --only main,${{ inputs.groups }}
+      run: poetry install --no-interaction --no-root --only ${{ inputs.groups }}
       if: steps.cache-deps.outputs.cache-hit != 'true'
