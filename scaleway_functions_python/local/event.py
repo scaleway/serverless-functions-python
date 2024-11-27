@@ -41,6 +41,6 @@ def format_http_event(request: "Request") -> "Event":
     try:
         b64decode(body, validate=True).decode("utf-8")
         event["isBase64Encoded"] = True
-    except (binascii.Error, UnicodeDecodeError):
+    except (binascii.Error, UnicodeDecodeError, ValueError):
         pass
     return event
