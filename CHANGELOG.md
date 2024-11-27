@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix Internal Server Error when body contained non-ASCII characters [#73](https://github.com/scaleway/serverless-functions-python/issues/73)
 
+### Changed
+
+- Removed support for Python 3.8 as it has reached its end of life
+
 ## [0.2.1] - 2024-07-15
 
 ### Fixed
