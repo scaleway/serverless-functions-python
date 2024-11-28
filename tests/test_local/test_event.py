@@ -44,7 +44,7 @@ def test_format_http_event(app):
         assert event["pathParameters"] is None
         assert not event["stageVariable"]
 
-        assert event["isBase64Encoded"] is True
+        assert event.get("isBase64Encoded")
 
         assert event["requestContext"] == expected_request_context
 
@@ -55,10 +55,10 @@ def test_format_http_event_with_non_unicode_body():
     # Create a request with non-unicode body
     non_unicode_body = b"\xff\xfe\xfd"  # Invalid UTF-8 sequence
     builder = EnvironBuilder(method="POST", data=non_unicode_body)
-    r = Request(builder.get_environ())
+    req = Request(builder.get_environ())
 
     # Call the function and check the result
-    event = format_http_event(r)
+    event = format_http_event(req)
 
     assert event is not None
     assert "body" in event

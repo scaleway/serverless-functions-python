@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "scaleway-functions-python"
-version = "0.2.1"
+version = "0.2.2"
 description = "Utilities for testing your Python handlers for Scaleway Serverless Functions."
 authors = ["Scaleway Serverless Team <opensource@scaleway.com>"]
 
@@ -31,7 +31,7 @@ classifiers = [
 include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
-python = ">=3.8.1, <3.13"
+python = ">=3.9, <3.13"
 flask = ">=2.2.2,<4.0.0"
 typing-extensions = { version = "^4.4.0", python = "<3.11" }
 
@@ -44,7 +44,7 @@ autoflake = ">=1.7.7,<3.0.0"
 black = ">=23.1,<25.0"
 flake8 = ">=6,<8"
 isort = "^5.10.1"
-pre-commit = "^3.0.4"
+pre-commit = "4.0.0"
 pylint = ">=2.16.2,<4.0.0"
 pylint-per-file-ignores = "^1.2.0"
 
