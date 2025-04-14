@@ -10,21 +10,21 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up python 3.12
+      - name: Set up python 3.13
         id: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Set up Poetry
         uses: ./.github/actions/setup-poetry
         with:
           groups: main
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Publish package
         run: poetry publish --build
