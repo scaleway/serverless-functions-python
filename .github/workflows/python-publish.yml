@@ -16,7 +16,7 @@ jobs:
 
       - name: Set up python 3.13
         id: setup-python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.13"
 
