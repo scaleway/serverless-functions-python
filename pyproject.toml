@@ -27,12 +27,13 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
 include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
-python = ">=3.9, <3.14"
+python = ">=3.9, <3.15"
 flask = ">=2.2.2,<4.0.0"
 typing-extensions = { version = "^4.4.0", python = "<3.11" }
 
